@@ -1,28 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
 }
 
-header {
+.header {
     background-color: #333;
     color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
-
-h1 {
-    margin: 0;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
     padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px 0 #888;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    margin: 0;
+    display: inline-block;
 }
 
 .work {
@@ -31,23 +29,44 @@ h1 {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
+    box-shadow: 0 0 5px 0 #888;
 }
 
-.work h2 {
+.work-title {
+    font-size: 1.8em;
+    font-weight: bold;
     color: #333;
 }
 
-.work p {
-    color: #666;
+.work-description {
+    font-size: 1.2em;
+    color: #555;
     margin: 10px 0;
 }
 
-.github-link {
+.work-link {
     text-decoration: none;
-    color: #333;
-    font-size: 1.2em;
+    color: #007BFF;
+    font-weight: bold;
 }
 
-.github-link:hover {
-    color: #555;
+.work-link:hover {
+    text-decoration: underline;
+}
+
+.category-lua {
+    background: #FFD3CE;
+}
+
+.back-button {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.github-link {
+    background: #333;
+    text-decoration: none;
+    color: white;
 }

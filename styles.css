@@ -1,48 +1,50 @@
+/* Resetowanie stylów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ogólny styl strony */
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-header {
+.header {
     background-color: #333;
     color: #fff;
-    padding: 20px 0;
+    padding: 20px;
     text-align: center;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-h1 {
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.title {
     margin: 0;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px 0 #888;
-    flex-grow: 1;
-    width: 100%;
-    display: flex;
+.work-in-progress {
+    font-style: italic;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
 }
 
-.category-container {
-    flex: 1;
-}
-
+/* Kategorie projektów */
 .category {
     margin-bottom: 20px;
-    padding: 20px;
-    background: #f9f9f9;
+    padding: 15px;
+    background: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
-    text-align: center;
+    box-shadow: 0 0 5px 0 #888;
 }
 
 .category-title {
@@ -51,42 +53,68 @@ h1 {
     color: #333;
 }
 
-.category-link {
+.project-link {
     text-decoration: none;
-    color: #555;
-    font-size: 1.4em;
+    color: #007BFF;
+    font-weight: bold;
 }
 
-.category-link:hover {
-    color: #777;
+.project-link:hover {
+    text-decoration: underline;
 }
 
 .category-unavailable {
     font-size: 1.4em;
-    color: #999;
+    color: #777;
 }
 
+/* Style kategorii */
+.category-python {
+    background: #D3FFCE;
+}
+
+.category-lua {
+    background: #FFD3CE;
+}
+
+.category-csharp {
+    background: #CED4FF;
+}
+
+.category-cplusplus {
+    background: #FFE9CE;
+}
+
+/* Linki społecznościowe */
 .link-section {
     background: #333;
     color: #fff;
     padding: 20px;
     text-align: center;
-    flex-basis: 200px;
-    border-radius: 5px;
-    margin-left: 20px;
 }
 
-.link {
+.social-links-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.social-link {
     display: block;
     text-decoration: none;
     color: #fff;
-    font-size: 1.4em;
-    padding: 10px;
-    background: #007BFF;
-    border-radius: 5px;
-    margin-top: 20px;
+    font-size: 1.6em; /* Zwiększono rozmiar czcionki przycisków mediów społecznościowych jeszcze bardziej */
+    margin: 20px 0; /* Zwiększono margines przycisków mediów społecznościowych jeszcze bardziej */
 }
 
-.link:hover {
-    background: #0056b3;
+.github-link {
+    background: #24292e;
+}
+
+.tiktok-link {
+    background: #FF6B6B;
+}
+
+.discord-link {
+    background: #7289DA;
 }
