@@ -70,3 +70,9 @@ body {
     text-decoration: none;
     color: white;
 }
+.work-in-progress {
+    font-style: italic;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+}
