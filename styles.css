@@ -11,7 +11,7 @@ body {
 }
 
 .background {
-    background-image: url('\background_main.png');
+    background-image: url('/background_image.png');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
