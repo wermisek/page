@@ -4,49 +4,63 @@
     <title>Moje Projekty</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Dodaj styl neonu do obramowki kategorii po najechaniu myszką */
+        .category:hover {
+            border: 2px solid transparent;
+            border-image: linear-gradient(to right, #FFD700, #FF8C00, #FFD700);
+            border-image-slice: 1;
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <h1 class="title">Moje Projekty</h1>
-        <p class="work-in-progress">Prace nad stroną w toku. Wkrótce pojawi się więcej języków programowania!</p>
-    </header>
-    <div class="container">
-        <div class="category-container">
-            <div class="category category-python">
-                <h2 class="category-title">Python</h2>
-                <div class="project-description">
-                    <p>Wszystkie moje projekty w jezyku Python</p>
-                    <p><a href="python.html" class="project-link">Zobacz projekty Python</a></p>
+    <div class="background">
+        <div class="content-container">
+            <header class="header">
+                <h1 class="title">Moje Projekty</h1>
+                <p class="work-in-progress">Prace nad stroną w toku. Wkrótce pojawi się więcej języków programowania!</p>
+            </header>
+            <div class="container">
+                <div class="category-container">
+                    <div class="category category-python">
+                        <h2 class="category-title">Python</h2>
+                        <div class="project-description">
+                            <p>Wszystkie moje projekty w języku Python</p>
+                            <p><a href="python.html" class="project-link">Zobacz projekty Python</a></p>
+                        </div>
+                    </div>
+                    <div class="category category-lua">
+                        <h2 class="category-title">Lua</h2>
+                        <div class="project-description">
+                            <p>Wszystkie moje projekty w języku Lua</p>
+                            <p><a href="lua.html" class="project-link">Zobacz projekty Lua</a></p>
+                        </div>
+                    </div>
+                    <div class="category category-csharp">
+                        <h2 class="category-title">C#</h2>
+                        <div class="project-description">
+                            <p>Obecnie brak dostępnego projektu w języku C#. Pracuję nad nowym projektem!</p>
+                            <p><span class="category-unavailable">Niedostępny</span></p>
+                        </div>
+                    </div>
+                    <div class="category category-cplusplus">
+                        <h2 class="category-title">C++</h2>
+                        <div class="project-description">
+                            <p>Obecnie brak dostępnego projektu w języku C++. Pracuję nad nowym projektem!</p>
+                            <p><span class="category-unavailable">Niedostępny</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Linki społecznościowe -->
+                <div id="menu" class="link-section">
+                    <h2 class="social-links-title">Linki Społecznościowe</h2>
+                    <a href="https://github.com/wermisek" class="social-link github-link"></a>
+                    <a href="https://www.tiktok.com/@weermis" class="social-link tiktok-link"></a>
+                    <a href="https://discord.gg/7xSdTU3xgu" class="social-link discord-link"></a>
+                    <!-- Dodaj link do Instagrama -->
+                    <a href="https://www.instagram.com/_wermis" class="social-link instagram-link"></a>
                 </div>
             </div>
-            <div class="category category-lua">
-                <h2 class="category-title">Lua</h2>
-                <div class="project-description">
-                    <p>Wszystkie moje projekty w jezyku Lua</p>
-                    <p><a href="lua.html" class="project-link">Zobacz projekty Lua</a></p>
-                </div>
-            </div>
-            <div class="category category-csharp">
-                <h2 class="category-title">C#</h2>
-                <div class="project-description">
-                    <p>Obecnie brak dostępnego projektu w języku C#. Pracuję nad nowym projektem!</p>
-                    <p><span class="category-unavailable">Niedostępny</span></p>
-                </div>
-            </div>
-            <div class="category category-cplusplus">
-                <h2 class="category-title">C++</h2>
-                <div class="project-description">
-                    <p>Obecnie brak dostępnego projektu w języku C++. Pracuję nad nowym projektem!</p>
-                    <p><span class="category-unavailable">Niedostępny</span></p>
-                </div>
-            </div>
-        </div>
-        <!-- Linki społecznościowe -->
-        <div id="menu" class="link-section">
-            <h2 class="social-links-title">Linki Społecznościowe</h2>
-            <a href="https://github.com/wermisek" class="social-link github-link">GitHub</a>
-            <a href="https://www.tiktok.com/@weermis" class="social-link tiktok-link">TikTok</a>
-            <a href="https://discord.gg/7xSdTU3xgu" class="social-link discord-link">Discord</a>
         </div>
     </div>
 </body>

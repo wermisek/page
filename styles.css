@@ -8,32 +8,38 @@
 /* Ogólny styl strony */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+}
+
+.background {
+    background-image: url('/background_main.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-container {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
 }
 
 .header {
     background-color: #333;
     color: #fff;
     padding: 20px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.menu-icon {
-    font-size: 30px;
-    cursor: pointer;
 }
 
 .title {
-    margin: 0;
+    font-size: 2em;
 }
 
 .work-in-progress {
     font-style: italic;
     color: #777;
-    text-align: center;
     margin-top: 20px;
 }
 
@@ -100,21 +106,39 @@ body {
 }
 
 .social-link {
-    display: block;
+    display: inline-block;
     text-decoration: none;
-    color: #fff;
-    font-size: 1.6em; /* Zwiększono rozmiar czcionki przycisków mediów społecznościowych jeszcze bardziej */
-    margin: 20px 0; /* Zwiększono margines przycisków mediów społecznościowych jeszcze bardziej */
+    color: transparent;
+    font-size: 1.6em;
+    margin: 0 20px;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
+/* Obrazy w tle przycisków społecznościowych */
 .github-link {
-    background: #24292e;
+    background-image: url('/github.png');
 }
 
 .tiktok-link {
-    background: #FF6B6B;
+    background-image: url('/tiktok.png');
+    
 }
 
 .discord-link {
-    background: #7289DA;
+    background-image: url('/discord.png');
+}
+
+/* Instagram */
+.instagram-link {
+    background-image: url('/instagram.png'); /* Dodaj ścieżkę do obrazu Instagrama */
+   
+}
+
+/* Po najechaniu myszką */
+.social-link:hover {
+    text-decoration: underline;
 }
