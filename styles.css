@@ -11,7 +11,7 @@ body {
 }
 
 .background {
-    background-image: url('../background_main.GIF');
+    background-image: url('./img/backgroundmain.gif');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -120,21 +120,21 @@ body {
 
 /* Obrazy w tle przycisków społecznościowych */
 .github-link {
-    background-image: url('../github.PNG');
+    background-image: url('img/github.png');
 }
 
 .tiktok-link {
-    background-image: url('../tiktok.PNG');
+    background-image: url('img/tiktok.png');
     
 }
 
 .discord-link {
-    background-image: url('../discord.PNG');
+    background-image: url('img/discord.png');
 }
 
 /* Instagram */
 .instagram-link {
-    background-image: url('../instagram.PNG'); /* Dodaj ścieżkę do obrazu Instagrama */
+    background-image: url('img/instagram.png'); /* Dodaj ścieżkę do obrazu Instagrama */
    
 }
 
