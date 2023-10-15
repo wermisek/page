@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pytania</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Resetowanie stylów */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Ogólny styl strony */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .background {
+            background-image: url('./img/backgroundmain.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content-container {
+            background-color: #333;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column; /* Ustaw kierunek flexbox na kolumnowy */
+            align-items: center;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%; /* Rozciągnij nagłówek na całą dostępną przestrzeń */
+        }
+
+        .title-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .title {
+            font-size: 2em;
+            margin: 0;
+            text-decoration: none;
+            color: white;
+        }
+
+        .back-button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            background-color: #007BFF; /* Kolor przycisku Powrót */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3; /* Kolor przycisku Powrót po najechaniu myszą */
+        }
+
+        .question-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .question-button {
+            margin-top: 20px;
+            font-size: 1.5em;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .check-button {
+            margin-top: 20px;
+            font-size: 1.5em;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .work-in-progress {
+            font-style: italic;
+            color: #777;
+            margin-top: 20px;
+        }
+
+        .answer {
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            margin: 5px;
+        }
+
+        .result {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="content-container">
+            <header class="header">
+                <div class="title-container">
+                    <h1 class="title">Pytania</h1>
+                </div>
+                <a class="back-button" href="index.html">Powrót</a>
+            </header>
+            <div class="question-container">
+                <p id="question">Kliknij, aby losować pytanie</p>
+                <button class="question-button" id="generate-button">Losuj inne pytanie</button>
+                <div id="answers-container">
+                    <label class="answer"><input type="radio" name="answer" value="A"> A</label>
+                    <label class="answer"><input type="radio" name="answer" value="B"> B</label>
+                    <label class="answer"><input type="radio" name="answer" value="C"> C</label>
+                    <label class="answer"><input type="radio" name="answer" value="D"> D</label>
+                </div>
+                <button class="check-button" id="check-button">Sprawdź Odpowiedź</button>
+                <p class="result" id="result-message"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tablica z pytaniami i odpowiedziami
+        var pytania = [
+    {
+        tresc: "Jaka jest definicja programowania?",
+        odpowiedzi: ["A: Tworzenie aplikacji internetowych", "B: Zapisywanie danych na dysku twardym", "C: Tworzenie sekwencji instrukcji dla komputera", "D: Tworzenie dokumentów tekstowych"],
+        poprawnaOdpowiedz: "C"
+    },
+    {
+        tresc: "Co to jest zmienna w programowaniu?",
+        odpowiedzi: ["A: Stała wartość", "B: Przechowuje dane", "C: Liczba całkowita", "D: Funkcja matematyczna"],
+        poprawnaOdpowiedz: "B"
+    },
+    {
+        tresc: "Jakie jest znaczenie skrótu 'HTML'?",
+        odpowiedzi: ["A: Hyper Transfer Markup Language", "B: Hyper Text Makeup Language", "C: High Tech Modern Language", "D: Hyperlink and Text Markup Language"],
+        poprawnaOdpowiedz: "A"
+    },
+    {
+        tresc: "Co to jest CSS?",
+        odpowiedzi: ["A: Creative Style Sheets", "B: Computer Style Sheets", "C: Cascading Style Sheets", "D: Colorful Style Sheets"],
+        poprawnaOdpowiedz: "C"
+    },
+    {
+        tresc: "Który język programowania jest często używany do tworzenia stron internetowych?",
+        odpowiedzi: ["A: Java", "B: Python", "C: Ruby", "D: JavaScript"],
+        poprawnaOdpowiedz: "D"
+    },
+    {
+        tresc: "Co to jest pętla w programowaniu?",
+        odpowiedzi: ["A: Rodzaj funkcji matematycznej", "B: Instrukcja warunkowa", "C: Fragment kodu wykonywany wielokrotnie", "D: Zmienna tekstowa"],
+        poprawnaOdpowiedz: "C"
+    },
+    {
+        tresc: "Która z poniższych nie jest bazą danych?",
+        odpowiedzi: ["A: MySQL", "B: MongoDB", "C: React", "D: PostgreSQL"],
+        poprawnaOdpowiedz: "C"
+    },
+    {
+        tresc: "Które z poniższych jest frameworkiem JavaScript?",
+        odpowiedzi: ["A: Django", "B: Ruby on Rails", "C: Angular", "D: Swift"],
+        poprawnaOdpowiedz: "C"
+    },
+    {
+        tresc: "Co to jest REST w kontekście programowania?",
+        odpowiedzi: ["A: Reprezentacyjny System Transferu", "B: Szyfrowanie danych", "C: Style Transfer Protocol", "D: Representational State Transfer"],
+        poprawnaOdpowiedz: "D"
+    },
+    {
+        tresc: "Jaki język programowania jest często stosowany do analizy danych i uczenia maszynowego?",
+        odpowiedzi: ["A: JavaScript", "B: C++", "C: Python", "D: Ruby"],
+        poprawnaOdpowiedz: "C"
+    },
+    {
+        tresc: "Co to jest HTML5?",
+        odpowiedzi: ["A: Najnowsza wersja języka HTML", "B: System operacyjny", "C: Styl arkusza kaskadowego", "D: Odtwarzacz multimedialny"],
+        poprawnaOdpowiedz: "A"
+    },
+    {
+        tresc: "Który z poniższych nie jest typem zmiennoprzecinkowym w języku programowania?",
+        odpowiedzi: ["A: float", "B: integer", "C: double", "D: decimal"],
+        poprawnaOdpowiedz: "B"
+    },
+    {
+        tresc: "Co to jest debugging?",
+        odpowiedzi: ["A: Proces oceny jakości kodu źródłowego", "B: Technika rysowania na ekranie komputera", "C: Proces znajdowania i naprawiania błędów w kodzie", "D: System kontroli wersji"],
+        poprawnaOdpowiedz: "C"
+    },
+    {
+        tresc: "Który język programowania jest często stosowany do tworzenia aplikacji mobilnych?",
+        odpowiedzi: ["A: PHP", "B: C#", "C: HTML", "D: Swift"],
+        poprawnaOdpowiedz: "D"
+    },
+    {
+        tresc: "Co to jest Linux?",
+        odpowiedzi: ["A: Marka komputerów", "B: Rodzaj systemu operacyjnego", "C: Przeglądarka internetowa", "D: Nazwa popularnej gry komputerowej"],
+        poprawnaOdpowiedz: "B"
+    },
+    {
+        tresc: "Które z poniższych jest narzędziem kontroli wersji?",
+        odpowiedzi: ["A: Photoshop", "B: Visual Studio Code", "C: Git", "D: Android Studio"],
+        poprawnaOdpowiedz: "C"
+    },
+    {
+        tresc: "Co oznacza skrót 'URL'?",
+        odpowiedzi: ["A: Uniform Resource Locator", "B: Universal Recording Language", "C: Underline and Return Language", "D: Unified Resource Listing"],
+        poprawnaOdpowiedz: "A"
+    },
+    {
+        tresc: "Który z poniższych nie jest językiem programowania?",
+        odpowiedzi: ["A: Java", "B: SQL", "C: CSS", "D: Ruby"],
+        poprawnaOdpowiedz: "C"
+    },
+    {
+        tresc: "Co oznacza skrót 'HTTP'?",
+        odpowiedzi: ["A: Hyper Transfer Text Protocol", "B: High Tech Transfer Protocol", "C: Hypertext Transfer Protocol", "D: Hyperlink and Text Transfer Protocol"],
+        poprawnaOdpowiedz: "C"
+    }
+];
+
+
+
+        var obecnePytanieIndex;
+        var poprawnaOdpowiedz;
+        var dostepnePytania = pytania.slice(); // Kopia dostępnych pytań
+
+        // Funkcja losująca pytanie i wyświetlająca je na stronie
+        function losujPytanie() {
+            // Jeśli skończyły się dostępne pytania, zresetuj dostępne pytania.
+            if (dostepnePytania.length === 0) {
+                dostepnePytania = pytania.slice();
+            }
+            
+            // Wybierz losowe pytanie z tablicy dostępnych pytań
+            obecnePytanieIndex = Math.floor(Math.random() * dostepnePytania.length);
+            var wylosowanePytanie = dostepnePytania[obecnePytanieIndex];
+
+            // Usuń wybrane pytanie z dostępnych pytań
+            dostepnePytania.splice(obecnePytanieIndex, 1);
+
+            // Wyświetl pytanie
+            var pytanieElement = document.getElementById("question");
+            pytanieElement.textContent = wylosowanePytanie.tresc;
+
+            // Wyświetl odpowiedzi
+            var answersContainer = document.getElementById("answers-container");
+            answersContainer.innerHTML = "";
+            wylosowanePytanie.odpowiedzi.forEach(function (odpowiedz) {
+                var label = document.createElement("label");
+                label.className = "answer";
+                var radio = document.createElement("input");
+                radio.type = "radio";
+                radio.name = "answer";
+                radio.value = odpowiedz[0];
+                label.appendChild(radio);
+                label.appendChild(document.createTextNode(odpowiedz));
+                answersContainer.appendChild(label);
+            });
+
+            // Zapisz poprawną odpowiedź
+            poprawnaOdpowiedz = wylosowanePytanie.poprawnaOdpowiedz;
+        }
+
+        // Nasłuchuj kliknięcia na przycisk "Losuj Pytanie"
+        document.getElementById("generate-button").addEventListener("click", losujPytanie);
+
+        // Nasłuchuj kliknięcia na przycisk "Sprawdź Odpowiedź"
+        document.getElementById("check-button").addEventListener("click", sprawdzOdpowiedz);
+
+        // Funkcja sprawdzająca odpowiedź
+        function sprawdzOdpowiedz() {
+            var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+            var resultMessage = document.getElementById("result-message");
+            if (!selectedAnswer) {
+                resultMessage.textContent = "Wybierz odpowiedź!";
+                return;
+            }
+            if (selectedAnswer.value === poprawnaOdpowiedz) {
+                resultMessage.textContent = "Odpowiedź poprawna!";
+            } else {
+                resultMessage.textContent = "Odpowiedź błędna. Poprawna odpowiedź to: " + poprawnaOdpowiedz;
+            }
+            // Wyczyść zaznaczenie odpowiedzi
+            selectedAnswer.checked = false;
+            // Ukryj komunikat po 2 sekundach
+            setTimeout(function () {
+                resultMessage.textContent = "";
+                // Losuj nowe pytanie
+                losujPytanie();
+            }, 2000);
+        }
+
+        // Losuj pierwsze pytanie przy rozpoczęciu
+        losujPytanie();
+    </script>
+</body>
+</html>
