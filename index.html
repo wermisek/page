@@ -17,7 +17,6 @@
     <div class="background">
         <div class="content-container">
             <header class="header">
-                <img id="user-avatar" src="" alt="Profilowe zdjęcie użytkownika">
                 <h1 class="title">Moje Projekty</h1>
                 <p class="work-in-progress">Prace nad stroną w toku. Wkrótce pojawi się więcej języków programowania!</p>
             </header>
@@ -31,7 +30,7 @@
                         </div>
                     </div>
                     <div class="category category-lua">
-                        <h2 class "category-title">Lua</h2>
+                        <h2 class="category-title">Lua</h2>
                         <div class="project-description">
                             <p>Wszystkie moje projekty w języku Lua</p>
                             <p><a href="lua.html" class="project-link">Zobacz projekty Lua</a></p>
@@ -64,28 +63,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Tutaj wykonaj zapytanie do Discord API i ustaw URL profilowego zdjęcia
-        const userId = '1094773345477734430';
-        const token = 'MTE0OTQ1MTU0NzUyMTA1Njg2OA.GRkZB9.PkYhEl5xFXiJwfeOSOdK_6cJLdBNUfvdASckc4';
-
-        // Wykonaj zapytanie do Discord API
-        fetch(`https://discord.com/api/v10/users/${userId}`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bot ${token}`
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Pobierz URL profilowego zdjęcia
-            const userAvatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${data.avatar}.png`;
-
-            // Ustaw URL w elemencie <img>
-            document.getElementById('user-avatar').src = userAvatarUrl;
-        })
-        .catch(error => console.error(error));
-    </script>
 </body>
 </html>
