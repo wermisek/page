@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moje Projekty</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        .category:hover {
+            border: 2px solid transparent;
+            border-image: linear-gradient(to right, #FFD700, #FF8C00, #FFD700);
+            border-image-slice: 1;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .back-button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .send-button {
+            font-size: 1em;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .send-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="content-container">
+            <header class="header">
+                <a class="title">Glowna</a>
+                <a class="back-button" href="index.html">Powrót</a>
+            </header>
+            <div class="container">
+                <div class="category-container">
+                    <div class="category category-python">
+                        <h2 class="category-title">Jeśli masz jakieś pomysły odnośnie strony, wpisz je tutaj (maks. 50 znaków):</h2>
+                        <input type="text" id="idea-input" placeholder="Twój pomysł...">
+                        <button class="send-button" onclick="sendIdea()">Wyślij</button>
+                        <div class="project-description">
+                            <p><a class="project-link"></a></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="menu" class="link-section">
+                    <h2 class="social-links-title">Moje linki społecznościowe:</h2>
+                    <a href="https://github.com/wermisek" class="social-link github-link"></a>
+                    <a href="https://www.tiktok.com/@weermis" class="social-link tiktok-link"></a>
+                    <a href="https://discord.gg/7xSdTU3xgu" class="social-link discord-link"></a>
+                    <a href="https://www.instagram.com/_wermis" class="social-link instagram-link"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var lastMessageTime = localStorage.getItem('lastMessageTime') || 0; // Pobierz znacznik czasu z magazynu przeglądarki
+        var messageLimit = 1; // Limit wiadomości na 20 minut
+        var sentMessages = localStorage.getItem('sentMessages') || 0; // Pobierz liczbę wysłanych wiadomości
+
+        function getUserIPAddress() {
+            return new Promise((resolve, reject) => {
+                const ipRequest = new XMLHttpRequest();
+                ipRequest.open('GET', 'https://api64.ipify.org?format=json');
+
+                ipRequest.onload = () => {
+                    if (ipRequest.status === 200) {
+                        try {
+                            const response = JSON.parse(ipRequest.responseText);
+                            const userIPAddress = response.ip;
+                            resolve(userIPAddress);
+                        } catch (error) {
+                            reject(error);
+                        }
+                    } else {
+                        reject('Nie można pobrać adresu IP użytkownika.');
+                    }
+                };
+
+                ipRequest.onerror = () => {
+                    reject('Błąd podczas żądania adresu IP.');
+                };
+
+                ipRequest.send();
+            });
+        }
+
+        function sendIdea() {
+            var currentTime = new Date().getTime(); // Pobierz aktualny znacznik czasu
+            if (currentTime - lastMessageTime < 20 * 60 * 1000) { // Sprawdź, czy minęło 20 minut
+                var remainingTime = Math.ceil((20 * 60 * 1000 - (currentTime - lastMessageTime)) / 1000);
+                alert('Nie wolno spamic musisz odczekac jeszcze ' + remainingTime + ' sekund przed wysłaniem kolejnej wiadomości.');
+                return; // Przerywa funkcję, jeśli limit czasu nie został spełniony
+            }
+
+            var ideaText = document.getElementById("idea-input").value;
+            if (ideaText.length > 50) {
+                alert('Maksymalna liczba znaków wynosi 50.');
+                return;
+            }
+
+            getUserIPAddress()
+                .then(userIPAddress => {
+                    var formattedIdea = "oto nowy pomysł: " + ideaText;
+                    var webhookURL = 'https://discord.com/api/webhooks/1163903125032275969/VJpL_3MwDBgaCTeputlkMw1F5A5n0_lhY2RuBF47UUcKHXVBpXElOLT1-FRgPT5tX_4_'; // Tutaj podaj swój webhook URL
+                    var data = { content: formattedIdea + '\nAdres IP użytkownika: ' + userIPAddress };
+
+                    fetch(webhookURL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Twój pomysł został wysłany na Discorda.');
+                            lastMessageTime = currentTime; // Aktualizacja znacznika czasu po wysłaniu wiadomości
+                            sentMessages++; // Zwiększenie liczby wysłanych wiadomości
+                            localStorage.setItem('lastMessageTime', lastMessageTime); // Zapis znacznika czasu w magazynie przeglądarki
+                            localStorage.setItem('sentMessages', sentMessages); // Zapis liczby wysłanych wiadomości w magazynie przeglądarki
+                        } else {
+                            alert('Wystąpił problem podczas wysyłania pomysłu.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Błąd:', error);
+                    });
+                })
+                .catch(error => {
+                    alert('Błąd podczas pobierania adresu IP użytkownika: ' + error);
+                });
+        }
+
+        // Sprawdzanie limitu co odświeżeniem strony
+        if (sentMessages >= messageLimit) {
+            document.getElementById('idea-input').disabled = true;
+            document.getElementById('send-button').disabled = true;
+        }
+    </script>
+</body>
+</html>

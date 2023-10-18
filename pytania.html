@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
-        /* Resetowanie stylów */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Ogólny styl strony */
         body {
             font-family: Arial, sans-serif;
         }
@@ -33,7 +31,7 @@
             padding: 20px;
             text-align: center;
             display: flex;
-            flex-direction: column; /* Ustaw kierunek flexbox na kolumnowy */
+            flex-direction: column;
             align-items: center;
         }
 
@@ -44,7 +42,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%; /* Rozciągnij nagłówek na całą dostępną przestrzeń */
+            width: 100%;
         }
 
         .title-container {
@@ -62,7 +60,7 @@
         .back-button {
             font-size: 1.5em;
             padding: 10px 20px;
-            background-color: #007BFF; /* Kolor przycisku Powrót */
+            background-color: #007BFF;
             color: white;
             border: none;
             border-radius: 5px;
@@ -71,7 +69,7 @@
         }
 
         .back-button:hover {
-            background-color: #0056b3; /* Kolor przycisku Powrót po najechaniu myszą */
+            background-color: #0056b3;
         }
 
         .question-container {
@@ -80,6 +78,19 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            background-color: #444;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            white-space: pre-line;
+            word-wrap: break-word;
+        }
+
+        .question-container p {
+            font-size: 1.5em;
+            color: #0099cc;
+            max-width: 100%;
         }
 
         .question-button {
@@ -148,7 +159,6 @@
     </div>
 
     <script>
-        // Tablica z pytaniami i odpowiedziami
         var pytania = [
     {
         tresc: "Jaka jest definicja programowania?",
@@ -247,31 +257,23 @@
     }
 ];
 
-
-
         var obecnePytanieIndex;
         var poprawnaOdpowiedz;
-        var dostepnePytania = pytania.slice(); // Kopia dostępnych pytań
+        var dostepnePytania = pytania.slice();
 
-        // Funkcja losująca pytanie i wyświetlająca je na stronie
         function losujPytanie() {
-            // Jeśli skończyły się dostępne pytania, zresetuj dostępne pytania.
             if (dostepnePytania.length === 0) {
                 dostepnePytania = pytania.slice();
             }
-            
-            // Wybierz losowe pytanie z tablicy dostępnych pytań
+
             obecnePytanieIndex = Math.floor(Math.random() * dostepnePytania.length);
             var wylosowanePytanie = dostepnePytania[obecnePytanieIndex];
 
-            // Usuń wybrane pytanie z dostępnych pytań
             dostepnePytania.splice(obecnePytanieIndex, 1);
 
-            // Wyświetl pytanie
             var pytanieElement = document.getElementById("question");
             pytanieElement.textContent = wylosowanePytanie.tresc;
 
-            // Wyświetl odpowiedzi
             var answersContainer = document.getElementById("answers-container");
             answersContainer.innerHTML = "";
             wylosowanePytanie.odpowiedzi.forEach(function (odpowiedz) {
@@ -286,17 +288,13 @@
                 answersContainer.appendChild(label);
             });
 
-            // Zapisz poprawną odpowiedź
             poprawnaOdpowiedz = wylosowanePytanie.poprawnaOdpowiedz;
         }
 
-        // Nasłuchuj kliknięcia na przycisk "Losuj Pytanie"
         document.getElementById("generate-button").addEventListener("click", losujPytanie);
 
-        // Nasłuchuj kliknięcia na przycisk "Sprawdź Odpowiedź"
         document.getElementById("check-button").addEventListener("click", sprawdzOdpowiedz);
 
-        // Funkcja sprawdzająca odpowiedź
         function sprawdzOdpowiedz() {
             var selectedAnswer = document.querySelector('input[name="answer"]:checked');
             var resultMessage = document.getElementById("result-message");
@@ -309,17 +307,13 @@
             } else {
                 resultMessage.textContent = "Odpowiedź błędna. Poprawna odpowiedź to: " + poprawnaOdpowiedz;
             }
-            // Wyczyść zaznaczenie odpowiedzi
             selectedAnswer.checked = false;
-            // Ukryj komunikat po 2 sekundach
             setTimeout(function () {
                 resultMessage.textContent = "";
-                // Losuj nowe pytanie
                 losujPytanie();
             }, 2000);
         }
 
-        // Losuj pierwsze pytanie przy rozpoczęciu
         losujPytanie();
     </script>
 </body>

@@ -85,10 +85,6 @@ body {
     font-weight: bold;
 }
 
-.project-link:hover {
-    text-decoration: underline;
-}
-
 .category-unavailable {
     font-size: 1.4em;
     color: #777;

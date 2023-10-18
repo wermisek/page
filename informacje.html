@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moje Projekty</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        
+        .category:hover {
+            border: 2px solid transparent;
+            border-image: linear-gradient(to right, #FFD700, #FF8C00, #FFD700);
+            border-image-slice: 1;
+        }
+
+        
+        .container {
+            max-width: 600px; 
+            margin: 0 auto; 
+        }
+        .back-button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            background-color: #007BFF; /* Kolor przycisku Powrót */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3; /* Kolor przycisku Powrót po najechaniu myszą */
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="content-container">
+            <header class="header">
+                <a class="title">Glowna</a>
+                <a class="back-button" href="index.html">Powrót</a>
+            </header>
+            <div class="container">
+                <div class="category-container">
+                    <div class="category category-python">
+                        <h2 class="category-title">Informacje o mnie</h2>
+                        <div class="project-description">
+                            <p><a class="project-link">Przygode z programowaniem zaczalem w 8 klasie podstawowki na lekcjach informatyki i historia ta trwa juz przez ponad 4 lata. Jestem w 3 klasie technikum na profilu technik programista i uwielbiam programowac aby ulatwic sobie codzienne rzeczy i nie musiec robic czegos czego nie lubie robic lub zajmuje mi to duzo czasu. Programuje glownie w pythonie ale potrafie programowac w CPP C# LUA HTML oraz JAVIE (java jest jeszcze na niskim poziomie). Aktualnie probuje sie skupic na uczeniu c# aby robic rownierz gierki zamiast samych programow. Jesli chcesz sie ze mna skontakowac mozesz wejsc na discorda ktory jest na dole napisac na instagramie lub poprostu wyslac wiadomosc prywatna na discordzie moja nazwa to "wermis"</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="menu" class="link-section">
+                    <h2 class="social-links-title">Moje linki spolecznosciowe: </h2>
+                    <a href="https://github.com/wermisek" class="social-link github-link"></a>
+                    <a href="https://www.tiktok.com/@weermis" class="social-link tiktok-link"></a>
+                    <a href="https://discord.gg/7xSdTU3xgu" class="social-link discord-link"></a>
+                    <a href="https://www.instagram.com/_wermis" class="social-link instagram-link"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
