@@ -1,4 +1,4 @@
-var redirect_uri = "https://wermisek.github.io/Projects/spotify.html/"; // change this your value
+var redirect_uri = "https://wermisek.github.io/Projects/spotifycontrol.html/"; // change this your value
 //var redirect_uri = "http://127.0.0.1:5500/index2.html/";
  
 
