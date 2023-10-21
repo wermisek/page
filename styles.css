@@ -1,18 +1,32 @@
-/* Resetowanie stylów */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Ogólny styl strony */
 body {
     font-family: Arial, sans-serif;
 }
 
+.header-top {
+    background-color: #007BFF;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1em;
+}
+
+.logo {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
 .background {
     background-image: url('./img/backgroundmain.gif');
-    background-size: cover;
+    background-size: cover; 
     background-repeat: no-repeat;
     height: 100vh;
     display: flex;
@@ -26,7 +40,7 @@ body {
     padding: 20px;
     text-align: center;
     display: flex;
-    flex-direction: column; /* Ustaw kierunek flexbox na kolumnowy */
+    flex-direction: column;
     align-items: center;
 }
 
@@ -35,26 +49,26 @@ body {
     color: #fff;
     padding: 20px;
     display: flex;
-    justify-content: space-between; /* Rozstaw elementów w nagłówku */
+    justify-content: space-between;
     align-items: center;
-    width: 100%; /* Rozciągnij nagłówek na całą dostępną przestrzeń */
+    width: 100%;
 }
 
 .title, .question-button {
     font-size: 2em;
     display: flex;
-    justify-content: center; /* Wyśrodkuj zawartość w pionie */
-    align-items: center; /* Wyśrodkuj zawartość w poziomie */
-    margin: 0; /* Usuń domyślny margines */
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
 
 .title {
-    flex: 1; /* Rozciągnij "Moje Projekty" na całą dostępną przestrzeń */
+    flex: 1;
     font-size: 40px;
 }
 
 .question-button {
-    margin-left: 20px; /* Dodaj odstęp między "Losuj Pytanie" a "Moje Projekty" */
+    margin-left: 20px;
 }
 
 .work-in-progress {
@@ -63,7 +77,6 @@ body {
     margin-top: 20px;
 }
 
-/* Kategorie projektów */
 .category {
     margin-bottom: 20px;
     padding: 15px;
@@ -90,7 +103,6 @@ body {
     color: #777;
 }
 
-/* Style kategorii */
 .category-python {
     background: #D3FFCE;
 }
@@ -107,7 +119,6 @@ body {
     background: #FFE9CE;
 }
 
-/* Linki społecznościowe */
 .link-section {
     background: #333;
     color: #fff;
@@ -134,7 +145,6 @@ body {
     background-size: cover;
 }
 
-/* Obrazy w tle przycisków społecznościowych */
 .github-link {
     background-image: url('./img/github.png');
 }
@@ -147,23 +157,30 @@ body {
     background-image: url('./img/discord.png');
 }
 
-/* Instagram */
 .instagram-link {
     background-image: url('./img/instagram.png');
 }
 
-/* Po najechaniu myszką */
 .social-link:hover {
     text-decoration: underline;
 }
 
 .question-link {
     font-size: 1.5em;
-            padding: 10px 20px;
-            background-color: #007BFF; /* Kolor przycisku Powrót */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.content-container2 {
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
 }

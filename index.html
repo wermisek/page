@@ -1,24 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Moje Projekty</title>
+    <title>Main Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
-        /* Dodaj styl neonu do obramowki kategorii po najechaniu myszką */
         .category:hover {
             border: 2px solid transparent;
             border-image: linear-gradient(to right, #FFD700, #FF8C00, #FFD700);
             border-image-slice: 1;
         }
-        
+
+        .content-container2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .github-profile {
+            max-width: 100px;
+            height: 50px;
+        }
+
+        .gif-container {
+            margin-left: 10px;
+        }
+        .pingwin {
+            width: 500px;
+            max-height: 100px;
+        }
+        .mern {
+            font-size: 30px;
+            color: white;
+        }
     </style>
 </head>
 <body>
     <div class="background">
         <div class="content-container">
+            <div class="content-container2">
+                <img class="pingwin" src="https://media1.giphy.com/media/2IudUHdI075HL02Pkk/giphy.gif?cid=ecf05e475afjwggqw4hhnkajk5ta0fc2yu20pgeac7r6xeh6&ep=v1_gifs_search&rid=giphy.gif&ct=g"> 
+            </div>
             <header class="header">
-                <a class="title">Glowna</a> 
+                <a class="title">Glowna</a>
             </header>
             <div class="container">
                 <div class="category-container">
@@ -61,5 +87,4 @@
         </div>
     </div>
 </body>
-
 </html>

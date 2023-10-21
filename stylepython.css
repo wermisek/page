@@ -1,11 +1,11 @@
-/* Resetowanie stylów */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Ogólny styl strony */
+
 body {
     font-family: Arial, sans-serif;
     background-image: url('./img/backgroundmain.gif');
@@ -19,16 +19,16 @@ body {
 }
 
 .content-container {
-    background-color: rgb(68, 68, 68); /* Dodaj tło z przezroczystym szarym kolorem */
+    background-color: rgb(68, 68, 68); 
     border-radius: 10px;
     padding: 20px;
     text-align: center;
-    width: 80%; /* Ustaw szerokość zawartości */
-    max-width: 800px; /* Maksymalna szerokość zawartości */
-    display: flex; /* Dodaj flexbox */
-    flex-direction: column; /* Ustaw kierunek flexbox na kolumnowy */
-    align-items: center; /* Wyśrodkuj w pionie */
-    margin: 0 auto; /* Wyśrodkuj w poziomie */
+    width: 80%; 
+    max-width: 800px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin: 0 auto; 
 }
 
 .header {

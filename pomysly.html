@@ -85,9 +85,9 @@
     </div>
 
     <script>
-        var lastMessageTime = localStorage.getItem('lastMessageTime') || 0; // Pobierz znacznik czasu z magazynu przeglądarki
-        var messageLimit = 1; // Limit wiadomości na 20 minut
-        var sentMessages = localStorage.getItem('sentMessages') || 0; // Pobierz liczbę wysłanych wiadomości
+        var lastMessageTime = localStorage.getItem('lastMessageTime') || 0; 
+        var messageLimit = 1; 
+        var sentMessages = localStorage.getItem('sentMessages') || 0; 
 
         function getUserIPAddress() {
             return new Promise((resolve, reject) => {
@@ -117,11 +117,11 @@
         }
 
         function sendIdea() {
-            var currentTime = new Date().getTime(); // Pobierz aktualny znacznik czasu
-            if (currentTime - lastMessageTime < 20 * 60 * 1000) { // Sprawdź, czy minęło 20 minut
+            var currentTime = new Date().getTime(); 
+            if (currentTime - lastMessageTime < 20 * 60 * 1000) { 
                 var remainingTime = Math.ceil((20 * 60 * 1000 - (currentTime - lastMessageTime)) / 1000);
                 alert('Nie wolno spamic musisz odczekac jeszcze ' + remainingTime + ' sekund przed wysłaniem kolejnej wiadomości.');
-                return; // Przerywa funkcję, jeśli limit czasu nie został spełniony
+                return; 
             }
 
             var ideaText = document.getElementById("idea-input").value;
@@ -144,10 +144,10 @@
                     .then(response => {
                         if (response.ok) {
                             alert('Twój pomysł został wysłany na Discorda.');
-                            lastMessageTime = currentTime; // Aktualizacja znacznika czasu po wysłaniu wiadomości
-                            sentMessages++; // Zwiększenie liczby wysłanych wiadomości
-                            localStorage.setItem('lastMessageTime', lastMessageTime); // Zapis znacznika czasu w magazynie przeglądarki
-                            localStorage.setItem('sentMessages', sentMessages); // Zapis liczby wysłanych wiadomości w magazynie przeglądarki
+                            lastMessageTime = currentTime; 
+                            sentMessages++; 
+                            localStorage.setItem('lastMessageTime', lastMessageTime); 
+                            localStorage.setItem('sentMessages', sentMessages); 
                         } else {
                             alert('Wystąpił problem podczas wysyłania pomysłu.');
                         }
@@ -161,7 +161,7 @@
                 });
         }
 
-        // Sprawdzanie limitu co odświeżeniem strony
+        
         if (sentMessages >= messageLimit) {
             document.getElementById('idea-input').disabled = true;
             document.getElementById('send-button').disabled = true;
